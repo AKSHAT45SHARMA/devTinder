@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/database');
 const User = require('./models/users');
 const userAuth = require("./utility/middleware/auth");
+const cors = require("cors");
 
 const app = express();
 const authRouter = require("./routers/auth");
@@ -9,6 +10,10 @@ const profileRouter = require("./routers/profile");
 const requestRouter = require("./routers/request");
 const userRouter = require('./routers/user');
 
+app.use(cors({
+    origin : "http://localhost:5173",
+    credentials : true,
+}));
 app.use(express.json());
 app.use('/',authRouter);
 app.use('/',profileRouter);

@@ -6,7 +6,7 @@ const userAuth = async (req,res,next)=>{
 
     try{
         if(!token){
-            throw new Error("invalid credentials!!");
+            return res.status(401).send("Invalid credentials");
         }
         const decodedObj = await jwt.verify(token,"mysecretkey");
         const user= await User.findOne({_id : decodedObj._id});

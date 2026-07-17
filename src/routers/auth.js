@@ -29,9 +29,9 @@ authRouter.post('/login', async(req,res)=>{
         }
         const token = await user.jwtsign();
         res.cookie("token",token);
-        res.send("Login Successfull" + token);
+        res.send( user);
     }catch(err){
-        res.status(404).send("something went wrong in Login:" + err);
+        res.status(400).send("something went wrong in Login:" + err);
     }
 });
 
@@ -71,8 +71,9 @@ authRouter.post('/signup', async(req,res)=>{
     });
     
     const savedUser =await user.save();
-        console.log(savedUser);
-    res.send("signup route");
+    const token = await user.jwtsign();
+    res.cookie("token",token);
+    res.send(savedUser);
     }catch(err){
         res.status(404).send("Error in saving user: " + err);
     }

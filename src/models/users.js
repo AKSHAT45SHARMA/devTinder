@@ -46,7 +46,6 @@ const userSchema = new mongoose.Schema({
         enum : ["male","female","other"],
         trim : true,
         lowercase : true,
-        required : true,
     },
     photoUrl :{
         type : String,
