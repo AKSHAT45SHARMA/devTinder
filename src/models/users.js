@@ -83,6 +83,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.jwtsign = async function(){
     const user = this;
+    console.log("hey");
 
     const token = await jwt.sign({_id : user.id},"mysecretkey");
     return token;
