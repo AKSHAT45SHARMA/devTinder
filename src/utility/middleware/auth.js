@@ -8,7 +8,7 @@ const userAuth = async (req,res,next)=>{
         if(!token){
             return res.status(401).send("Invalid credentials");
         }
-        const decodedObj = await jwt.verify(token,"mysecretkey");
+        const decodedObj = await jwt.verify(token,process.env.JWT_SECRET);
         const user= await User.findOne({_id : decodedObj._id});
         if(!user){
             throw new Error("Invalid Credentials....");

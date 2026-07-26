@@ -8,7 +8,6 @@ const cookieParser = require("cookie-parser");
 
 authRouter.use(cookieParser());
 
-
 authRouter.post('/login', async(req,res)=>{
     const {email, password} = req.body;
 

@@ -3,6 +3,8 @@ const connectDB = require('./config/database');
 const User = require('./models/users');
 const userAuth = require("./utility/middleware/auth");
 const cors = require("cors");
+require("dotenv").config();
+
 
 const app = express();
 const authRouter = require("./routers/auth");
